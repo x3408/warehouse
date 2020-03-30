@@ -17,4 +17,8 @@ public interface CargoService {
     Integer editCargo(Cargo cargo);
 
     Integer outBound(Integer id);
+
+    Integer getInboundNum();
+
+    Integer getOutboundNum();
 }

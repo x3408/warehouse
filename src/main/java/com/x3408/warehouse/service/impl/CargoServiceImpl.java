@@ -42,13 +42,33 @@ public class CargoServiceImpl implements CargoService {
     public Integer editCargo(Cargo cargo) {
         Timestamp timestamp = new Timestamp(new Date().getTime());
         cargo.setDate(timestamp);
+
+        if (cargo.getStat() == 3 || cargo.getStat() == 4) {
+            cargoMapper.addOutboundNum();
+        } else if (cargo.getStat() == 1 || cargo.getStat() == 2) {
+            cargoMapper.addInboundNum();
+        }
         return cargoMapper.editCargoById(cargo);
     }
 
     @Override
     public Integer outBound(Integer id) {
         Cargo cargo = getCargo(id);
-        cargo.setStat(3);
+        Timestamp timestamp = new Timestamp(new Date().getTime());
+        cargo.setDate(timestamp);
+        cargo.setStat(3);       //设置为正在出库的状态
+
+        cargoMapper.addOutboundNum();
         return this.editCargo(cargo);
+    }
+
+    @Override
+    public Integer getInboundNum() {
+        return cargoMapper.getInboundNum();
+    }
+
+    @Override
+    public Integer getOutboundNum() {
+        return cargoMapper.getOutboundNum();
     }
 }

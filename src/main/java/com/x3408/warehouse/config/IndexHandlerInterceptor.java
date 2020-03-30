@@ -28,11 +28,15 @@ public class IndexHandlerInterceptor implements HandlerInterceptor {
         Integer cargoCount = cargoService.getCargoCount();
         //数据库查询管理员人数
         Integer adminCount = adminService.getAdminCount();
+        Integer inboundNum = cargoService.getInboundNum();
+        Integer outboundNum = cargoService.getOutboundNum();
 
         //放进request域中回显
         request.setAttribute("adminCount",adminCount);
         request.setAttribute("cargoCount",cargoCount);
         request.setAttribute("weathers",weatherData);
+        request.setAttribute("inboundNum",inboundNum);
+        request.setAttribute("outboundNum",outboundNum);
 
         return true;
     }

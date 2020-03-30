@@ -47,11 +47,7 @@ class WarehouseApplicationTests {
     }
     @Test
     void cargoTest() {
-        Cargo cargo = new Cargo();
-        cargo.setId(1);
-        cargo.setCargoName("概念商品");
-        cargo.setStat(1);
-        System.out.println(cargoService.editCargo(cargo));
+        cargoService.outBound(1);
     }
     @Test
     void weatherTest() {

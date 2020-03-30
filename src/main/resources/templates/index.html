@@ -167,7 +167,7 @@
                             <div class="widget-content bg-white">
                                 <div class="row">
                                     <div class="col-xs-6">
-                                        <h3 class="counter font-bold font-size-38">84</h3>
+                                        <h3 class="counter font-bold font-size-38">[[${inboundNum}]]</h3>
                                     </div>
                                     <div class="col-xs-6">
                                         <p class="font-size-38"><span class="icon-arrow-down pull-right"></span></p>
@@ -175,7 +175,7 @@
                                 </div>
                                 <p>入 库 数</p>
                                 <div class="progress progress-xs">
-                                    <div class="progress-bar bg-sun-flower" role="progressbar" data-transitiongoal="120"></div>
+                                    <div class="progress-bar bg-sun-flower" role="progressbar" data-transitiongoal="120" th:attr="data-transitiongoal=${inboundNum/100.0*100}"></div>
                                 </div>
                                 <a th:href="@{/navigateToCargo}" href="#" class="padding-8 hvr-bounce-to-right bg-sun-flower" style="width:100%;">入库登记<i class="fa fa-arrow-circle-right"></i></a>
                             </div><!--/widget-content--> 
@@ -189,7 +189,7 @@
                             <div class="widget-content bg-white">
                                 <div class="row">
                                     <div class="col-xs-6">
-                                        <h3 class="counter font-bold font-size-38">341</h3>
+                                        <h3 class="counter font-bold font-size-38">[[${outboundNum}]]</h3>
                                     </div>
                                     <div class="col-xs-6">
                                         <p class="font-size-38"><span class="icon-arrow-up pull-right"></span></p>
@@ -197,9 +197,9 @@
                                 </div>
                                 <p>出 库 数</p>
                                 <div class="progress progress-xs">
-                                    <div class="progress-bar bg-alizarin" role="progressbar" data-transitiongoal="45"></div>
+                                    <div class="progress-bar bg-alizarin" role="progressbar" data-transitiongoal="45" th:attr="data-transitiongoal=${outboundNum/100.0*100}"></div>
                                 </div>
-                                <a href="#" class="padding-8 hvr-bounce-to-right bg-alizarin" style="width:100%;">出库登记<i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="#" class="padding-8 hvr-bounce-to-right bg-alizarin" style="width:100%;" th:href="@{/listCargo}">出库登记<i class="fa fa-arrow-circle-right"></i></a>
                             </div><!--/widget-content--> 
                         </div><!--/widget-->
                         

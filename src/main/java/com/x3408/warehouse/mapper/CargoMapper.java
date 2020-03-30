@@ -18,7 +18,7 @@ public interface CargoMapper {
     @Select("select sum(amount) from cargo")
     Integer getCargoCount();
 
-    @Options(useGeneratedKeys = true,keyProperty = "id")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
     @Insert("insert into cargo(cargoName,description,amount,stat,date) " +
             "values(#{cargoName},#{description},#{amount},#{stat},#{date})")
     Integer addCargo(Cargo cargo);
@@ -28,4 +28,19 @@ public interface CargoMapper {
 
     @Update("update cargo set cargoName=#{cargoName},description=#{description},amount=#{amount},stat=#{stat} where id=#{id}")
     Integer editCargoById(Cargo cargo);
+
+    @Update("update cargonum set inboundNum=0,outboundNum=0 where id=1")
+    void refreshCargoNum();
+
+    @Select("select inboundNum from cargonum where id=1")
+    Integer getInboundNum();
+
+    @Select("select outboundNum from cargonum where id=1")
+    Integer getOutboundNum();
+
+    @Update("update cargonum set outboundNum=outboundNum+1 where id=1")
+    void addOutboundNum();
+
+    @Update("update cargonum set inboundNum=inboundNum+1 where id=1")
+    void addInboundNum();
 }

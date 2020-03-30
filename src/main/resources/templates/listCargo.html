@@ -154,7 +154,7 @@
                                         <th>商品名</th>
                                         <th>描述</th>
                                         <th>库存数量</th>
-                                        <th>更新时间</th>
+                                        <th data-sortable="true">更新时间</th>
                                         <th>状态</th>
                                         <th class="text-center" style="width:12%; text-align:center; text-align:center">操作</th>
                                       </tr>
@@ -176,9 +176,9 @@
                                                 <a class="btn btn-sm btn-default btn-raised rippler rippler-inverse" th:href="@{/getCargoToEdit/}+${cargo.id}">
                                                     <i class="fa fa-pencil-square-o"></i>
                                                 </a>
-                                                <button id="outbound" class="btn btn-sm btn-danger btn-raised rippler rippler-inverse" th:value="${cargo.id}">
+                                                <a class="btn btn-sm btn-danger btn-raised rippler rippler-inverse" th:href="@{/outBound/}+${cargo.id}">
                                                     <i class="fa fa-sign-out"></i>
-                                                </button>
+                                                </a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -311,30 +311,6 @@
             App.initPopover();
 
         });
-    </script>
-    <script th:inline="javascript">
-        /*<![CDATA[*/
-        $.ajax({
-            type: 'put',
-            data: $('#outbound').value,
-            url: '/outBound',
-            cache: false,
-            dataType: 'json',
-            success: function (data) {
-                if (data.data) {
-                    swal({
-                            title: '出库成功！',
-                            type: 'success'
-                        },
-                        function (isConfirm) {
-                            window.location.href = [[@{/listCargo}]]
-                        });
-                } else {
-                    swal('更新失败', '您可以稍后尝试该操作', "error");
-                }
-            }
-        })
-        /*]]>*/
     </script>
 </body>
 

@@ -58,17 +58,10 @@ public class CargoController {
         return JSONUtils.toJSONString(map);
     }
 
-    @ResponseBody
-    @PutMapping("/outBound")
-    public String outBound(@RequestParam("id") Integer id) {
+    @GetMapping("/outBound/{id}")
+    public String outBound(@PathVariable("id") Integer id) {
         Integer successCount = cargoService.outBound(id);
-        Map<String, String> map = new HashMap<>();
-        if (successCount == 1)
-            map.put("data", "1");
-        else
-            map.put("data", "0");
-        //设置提示
-        return JSONUtils.toJSONString(map);
+        return "redirect:/listCargo";
     }
 
 }
