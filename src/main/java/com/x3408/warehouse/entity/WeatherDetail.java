@@ -1,6 +1,8 @@
 package com.x3408.warehouse.entity;
 
-public class WeatherDetail {
+import java.io.Serializable;
+
+public class WeatherDetail implements Serializable {
     private String day;        //日期
     private String week;        //星期
     private String tem;         //温度

@@ -1,9 +1,9 @@
 package com.x3408.warehouse.entity;
 
-
+import java.io.Serializable;
 import java.util.List;
 
-public class Weather {
+public class Weather implements Serializable {
     private String update_time;
     private String city;
     private List<WeatherDetail> data;

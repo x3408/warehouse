@@ -4,6 +4,7 @@ import com.x3408.warehouse.mapper.CargoMapper;
 import com.x3408.warehouse.entity.Cargo;
 import com.x3408.warehouse.service.CargoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -21,6 +22,7 @@ public class CargoServiceImpl implements CargoService {
     }
 
     @Override
+    @Cacheable(value = "cargo",key = "'cargoNum'")
     public Integer getCargoCount() {
         return cargoMapper.getCargoCount();
     }

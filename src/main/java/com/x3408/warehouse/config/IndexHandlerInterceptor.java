@@ -5,6 +5,7 @@ import com.x3408.warehouse.service.AdminService;
 import com.x3408.warehouse.service.CargoService;
 import com.x3408.warehouse.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -19,6 +20,7 @@ public class IndexHandlerInterceptor implements HandlerInterceptor {
     CargoService cargoService;
     @Autowired
     AdminService adminService;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //先从Redis中查询

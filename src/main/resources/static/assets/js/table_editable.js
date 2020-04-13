@@ -43,7 +43,9 @@ $(function () {
             oTable.fnDraw();
         }
 
-        var oTable = $('#table-editable').dataTable();
+        var oTable = $('#table-editable').dataTable({
+            "order": [[ 3, "asc" ]]
+        });
 
         jQuery('#table-edit_wrapper .dataTables_filter input').addClass("form-control medium"); // modify table search input
         jQuery('#table-edit_wrapper .dataTables_length select').addClass("form-control xsmall"); // modify table per page dropdown
